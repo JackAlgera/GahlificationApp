@@ -1,0 +1,33 @@
+package com.blablacar.proto.loggingschema;
+
+import "google/protobuf/descriptor.proto";
+
+option java_multiple_files = true;
+
+/*
+// implementation
+logger = new LoggingSchemaLogger();
+
+logger.error(Printf("Failed to do thing for user with uuid %s, user.getId())
+          .setBackOfficeUser(agent.getUsername())
+          .setUserUuid(user.getUuid())
+          .setUsedPermission(getUsedPermission())
+          .log();
+
+ */
+
+extend google.protobuf.EnumValueOptions {
+  optional string key = 50000;
+}
+
+enum LoggingAttributeKeys {
+  CORRELATION_ID        = 1 [(key) = "correlation_id"];
+  USED_PERMISSION_NAME  = 2 [(key) = "used_permission_name"];
+  USER_UUID             = 3 [(key) = "user_uuid"];
+  LEGACY_USER_ID        = 4 [(key) = "legacy_user_id"];
+  VISITOR_IDS           = 5 [(key) = "visitor_ids"];
+  LEGACY_TRIP_ID        = 6 [(key) = "legacy_trip_id"];
+  TRIP_UUID             = 7 [(key) = "trip_uuid"];
+  ZENDESK_TICKET_ID     = 8 [(key) = "zendesk_ticket_id"];
+  ZENDESK_USER_ID       = 9 [(key) = "zendesk_user_id"];
+}
